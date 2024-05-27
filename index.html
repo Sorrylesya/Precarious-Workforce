@@ -1,7 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
+    #and???????   lets try again and againnnnnn
+    <title>Simple Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #bf1313;
+            margin: 5;
+            padding: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(120, 136, 137, 0.1);
+            width: 300px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-container input[type="submit"] {
+            background-color: #2e686b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #1a1745;
+        }
+    </style>
 </head>
 <body>
+    <div class="form-container">
+        <form action="https://formspree.io/f/moqgzbvo" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
