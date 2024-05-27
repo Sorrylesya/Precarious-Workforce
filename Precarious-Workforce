@@ -7,8 +7,8 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #bf1313;
-            margin: 0;
-            padding: 0;
+            margin: 5;
+            padding: 2;
             display: flex;
             justify-content: center;
             align-items: center;
