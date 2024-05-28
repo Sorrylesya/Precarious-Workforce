@@ -2,60 +2,86 @@
 <html>
 <head>
     <title>Precarious Workforce</title>
-
-
     <style>
         @font-face {
-    font-family: "ABCDiatypeEdu-Black";
-    src: url('ABCDiatypeEdu-Black.woff2') format('woff2'),
-         url('ABCDiatypeEdu-Black.woff') format('woff');
-}
+            font-family: "ABCDiatypeEdu-Bold";
+            src: url('ABCDiatypeEdu-Bold.woff2') format('woff2'),
+                 url('ABCDiatypeEdu-Bold.woff') format('woff');
+        }
 
         body {
-            font-family: "ABCDiatypeEdu-Black", sans-serif;
+            font-family: "ABCDiatypeEdu-Bold", serif;
             background-color: #fff200;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
-          /* create a white big container */
+
+        /* create a white big container */
         .form-container {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             width: 430px;
+            box-sizing: border-box;
         }
+
         /* style text on a white big container */
         .form-container label {
-            display: flex;
+            display: block;
             margin-bottom: 5px;
-
         }
-         /* style text-boxes to put in input */
+
+        /* style text-boxes to put in input */
         .form-container input[type="text"] {
-            width: 400px;
+            width: calc(100% - 30px); /* Adjust width for padding */
             padding: 15px;
             margin-bottom: 10px;
             border: 1px solid #000000;
             border-radius: 3px;
-
+            box-sizing: border-box;
         }
+
         /* style the 'submit' button */
         .form-container input[type="submit"] {
-            font-family: "ABCDiatypeEdu-Black", sans-serif;
-            font-size: 50px;
+            font-family: "ABCDiatypeEdu-Bold", sans-serif;
+            font-size: 20px; /* Adjust font size for mobile */
             color: white;
             margin-top: 10px;
             background-color: #000000;
             border: 1px solid #000000;            
             border-radius: 3px;
-            width: 430px;
+            width: 100%; /* Full width for mobile */
             padding: 15px;
+            box-sizing: border-box;
         }
-      
-    </style>
 
+        /* Media query for mobile devices */
+        @media (max-width: 480px) {
+            body {
+                height: auto;
+                padding: 20px;
+            }
+
+            .form-container {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .form-container input[type="text"] {
+                width: calc(100% - 30px);
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .form-container input[type="submit"] {
+                font-size: 18px;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">
@@ -68,7 +94,7 @@
             <label for="surname">Surname</label>
             <input type="text" id="surname" name="surname" required>
 
-            <!-- imput adress, city, zip, country -->
+            <!-- input address, city, zip, country -->
             <label for="address">Address</label>
             <input type="text" id="address" name="address" required>
 
@@ -81,7 +107,7 @@
             <label for="country">Country</label>
             <input type="text" id="country" name="country" required>
 
-            <!-- button to imput info -->
+            <!-- button to input info -->
             <input type="submit" value="SUBMIT">
         </form>
     </div>
