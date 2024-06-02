@@ -10,7 +10,8 @@
                  url('ABCDiatypeEdu-Bold.woff') format('woff');
         }
 
-        body {
+        body
+         {
             font-family: "ABCDiatypeEdu-Bold", serif;
             background-color: #ffd500;
             margin: 0;
@@ -155,10 +156,11 @@
 </head>
 <body>
     <div class="logo-container">
+    
         <img src="logo2.png" alt="Precarious Workforce Logo" class="logo">
     </div>
     <div class="landing-section">
-        Is it going according to plan?
+        <p id="main-text"></p>
         <div class="arrow">&#x2193;</div> <!-- Down arrow glyph -->
     </div>
     <div class="form-section">
@@ -188,38 +190,39 @@
                 <input type="submit" value="Become a member of PWO">
             </form>
 
+            <script>
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent the default form submission
+        
+                    var form = event.target;
+                    var formData = new FormData(form);
+        
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', form.action, true);
+                    xhr.setRequestHeader('Accept', 'application/json');
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                // Show success message
+                                document.getElementById('success-message').style.display = 'block';
+                                // Reset the form
+                                form.reset();
+                            } else {
+                                // Handle error
+                                alert('There was an error submitting the form. Please try again.');
+                            }
+                        }
+                    };
+                    xhr.send(formData);
+                });
+            </script>
+
             <div class="success-message" id="success-message">
                 Thank you! You will now receive occasional letters from the Precarious Workforce Organization in your mailbox.
             </div>
         </div>
+        </div>
     </div>
-
-    <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            var form = event.target;
-            var formData = new FormData(form);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', form.action, true);
-            xhr.setRequestHeader('Accept', 'application/json');
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // Show success message
-                        document.getElementById('success-message').style.display = 'block';
-                        // Reset the form
-                        form.reset();
-                    } else {
-                        // Handle error
-                        alert('There was an error submitting the form. Please try again.');
-                    }
-                }
-            };
-            xhr.send(formData);
-        });
-    </script>
 
 <script>
     // Get the arrow element
@@ -233,6 +236,26 @@
         // Scroll smoothly to the form section
         formSection.scrollIntoView({ behavior: 'smooth' });
     });
+</script>
+
+<script>
+    // Array containing text options
+    var textOptions = [
+        "Is it going according to plan?",
+        "What's next on your journey?",
+        "How do you define success?",
+        // Add more text options as needed
+    ];
+
+    // Get the main text element
+    var mainText = document.getElementById('main-text');
+
+    // Randomly select a text option
+    var randomIndex = Math.floor(Math.random() * textOptions.length);
+    var selectedText = textOptions[randomIndex];
+
+    // Set the selected text as the content of the main text element
+    mainText.textContent = selectedText;
 </script>
 
 </body>
