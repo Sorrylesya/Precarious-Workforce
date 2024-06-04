@@ -10,8 +10,7 @@
                  url('ABCDiatypeEdu-Bold.woff') format('woff');
         }
 
-        body
-         {
+        body {
             font-family: "ABCDiatypeEdu-Bold", serif;
             background-color: #ffd500;
             margin: 0;
@@ -32,7 +31,7 @@
             padding: 20px;
             box-sizing: border-box;
             position: relative;
-            line-height: 0.9; /* Adjust the line height as needed */
+            line-height: 0.99; /* Adjust the line height as needed */
         }
 
         /* Arrow pointing down */
@@ -113,15 +112,26 @@
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .landing-section {
-                font-size: 4rem; /* Adjusted font size for mobile */
+                font-size: 3.1rem; /* Adjusted font size for mobile */
+                height: calc(100vh - 50px); /* Reduce height to fit logo, text, and arrow */
+                justify-content: center; /* Align items to the top */
+                padding-left: 20px;
+                padding-left: 20px; 
+            /* Add padding to create space for the logo */
             }
 
             .form-container {
                 padding: 20px;
             }
 
+            .logo-container {
+                position: absolute; /* Change position to absolute for mobile */
+                top: 10px; /* Margin from top */
+                left: 10px; /* Margin from left */
+            }
+
             .logo {
-                width: 203.33px; /* Smaller logo size for mobile */
+                width: 153.33px; /* Smaller logo size for mobile */
             }
 
             .form-container input[type="text"] {
@@ -132,6 +142,11 @@
             .form-container input[type="submit"] {
                 font-size: 18px;
                 padding: 10px;
+            }
+
+            .arrow {
+                font-size: 3,5rem; /* Smaller arrow size for mobile */
+                bottom: 10px; /* Adjust bottom padding */
             }
         }
 
@@ -156,7 +171,6 @@
 </head>
 <body>
     <div class="logo-container">
-    
         <img src="logo2.png" alt="Precarious Workforce Logo" class="logo">
     </div>
     <div class="landing-section">
@@ -221,7 +235,6 @@
                 Thank you! You will now receive occasional letters from the Precarious Workforce Organization in your mailbox.
             </div>
         </div>
-        </div>
     </div>
 
 <script>
@@ -241,22 +254,38 @@
 <script>
     // Array containing text options
     var textOptions = [
-        "Is it going according to plan?",
-        "What's next on your journey?",
-        "How do you define success?",
-        // Add more text options as needed
-    ];
+            "Is it going according to plan?",
+            "Do you ever feel insecure?",
+            "How do you define success?",
+            "In need of a graphic design job?",
+            "Would you call yourself a good designer?",
+            "Do you want to feel like a part of a community?",
+            "Do you feel financially unstable?",
+            // Add more text options as needed
+        ];
 
-    // Get the main text element
-    var mainText = document.getElementById('main-text');
+        // Get the main text element
+        var mainText = document.getElementById('main-text');
 
-    // Randomly select a text option
-    var randomIndex = Math.floor(Math.random() * textOptions.length);
-    var selectedText = textOptions[randomIndex];
+        // Get the index of the last chosen option from localStorage
+        var lastChosenIndex = localStorage.getItem('lastChosenIndex');
+        if (lastChosenIndex === null) {
+            lastChosenIndex = -1; // Initialize last chosen index
+        }
 
-    // Set the selected text as the content of the main text element
-    mainText.textContent = selectedText;
-</script>
+        // Randomly select a text option different from the last chosen one
+        var randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * textOptions.length);
+        } while (randomIndex === parseInt(lastChosenIndex)); // Ensure index is different
+
+        // Set the selected text as the content of the main text element
+        var selectedText = textOptions[randomIndex];
+        mainText.textContent = selectedText;
+
+        // Store the index of the current chosen option in localStorage
+        localStorage.setItem('lastChosenIndex', randomIndex);
+    </script>
 
 </body>
 </html>
